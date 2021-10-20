@@ -5,7 +5,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
-  res.status(200).send(req.body.challenge);
+  console.log("req.body: ", req.body);
+  res.status(200).send(req.body);
 });
 
 app.listen(process.env.PORT || 3000);
