@@ -6,7 +6,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
-  console.log("req.body: ", req.body);
+  let payload = req.body
+  console.log("payload: ", payload);
 
   var url = "https://slack.com/api/chat.postMessage";
   var auth_token = process.env.BOT_TOKEN; //Your Bot's auth token
@@ -15,11 +16,19 @@ app.post("/", (req, res) => {
     "Content-Type": "application/json",
   };
 
-  console.log(auth_token);
+  let responseText = ""
+
+  if (payload.event.type === "message") {
+    if (payload.event.text.includes("Hello")) {
+      responseText = "Hey there!";
+    }
+  } else {
+    responseText = "I'm sorry, I didn't understand"
+  }
 
   var body = {
     channel: req.body.event.channel, // Slack user or channel, where you want to send the message
-    text: "Test123.",
+    text: responseText,
   };
 
   request.post(
