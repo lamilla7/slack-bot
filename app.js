@@ -10,13 +10,13 @@ app.post("/", (req, res) => {
   res.status(200).send(req.body);
 
   var url = "https://slack.com/api/chat.postMessage";
-  var auth_token = "xoxb-2624921235554-2637594276225-P0teB9TyFgpQqaDMQG79o24Q"; //Your Bot's auth token
+  var auth_token = process.env.BOT_TOKEN; //Your Bot's auth token
   var headers = {
     Authorization: "Bearer " + auth_token,
     "Content-Type": "application/json",
   };
   var body = {
-    channel: "C02JCTHV4LB", // Slack user or channel, where you want to send the message
+    channel: req.body.event.channel, // Slack user or channel, where you want to send the message
     text: "Your text goes here.",
   };
 
