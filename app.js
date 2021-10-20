@@ -7,14 +7,16 @@ app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
   console.log("req.body: ", req.body);
-  res.status(200).send(req.body);
 
   var url = "https://slack.com/api/chat.postMessage";
   var auth_token = process.env.BOT_TOKEN; //Your Bot's auth token
   var headers = {
-    Authorization: "Bearer " + auth_token,
+    "Authorization": "Bearer " + auth_token,
     "Content-Type": "application/json",
   };
+
+  console.log(auth_token);
+
   var body = {
     channel: req.body.event.channel, // Slack user or channel, where you want to send the message
     text: "Your text goes here.",
