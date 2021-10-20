@@ -36,6 +36,8 @@ app.post("/", (req, res) => {
       console.log("body: ", body);
     }
   );
+
+  res.status(200).send({code: 'success', message: 'bot responded successfully'});
 });
 
 app.listen(process.env.PORT || 3000);
