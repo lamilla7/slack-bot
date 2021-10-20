@@ -19,7 +19,7 @@ app.post("/", (req, res) => {
 
   var body = {
     channel: req.body.event.channel, // Slack user or channel, where you want to send the message
-    text: "Your text goes here.",
+    text: "Test123.",
   };
 
   request.post(
