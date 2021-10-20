@@ -16,14 +16,12 @@ app.post("/", (req, res) => {
     "Content-Type": "application/json",
   };
 
-  let responseText = ""
+  let responseText = "I'm sorry, I didn't understand"
 
   if (payload.event.type === "message") {
     if (payload.event.text.includes("Hello")) {
       responseText = "Hey there!";
     }
-  } else {
-    responseText = "I'm sorry, I didn't understand"
   }
 
   var body = {
