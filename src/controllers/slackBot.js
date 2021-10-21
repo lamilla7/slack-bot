@@ -23,7 +23,13 @@ const ProcessBotResponse = async (req, res) => {
           msgText.includes("ok") ||
           msgText.includes("well")
         ) {
-          responseText = "That's great :+1:  what can I do for you?";
+          responseText = "That's great :+1: what can I do for you?";
+        } else if (
+          msgText.includes("bad") ||
+          msgText.includes("sad") ||
+          msgText.includes("mad")
+        ) {
+          responseText = "That's sad :slightly_frowning_face: cheer up :raised_hands: what can I do for you?";
         } else if (
           msgText.includes("vehicle") ||
           msgText.includes("nhtsa") ||
