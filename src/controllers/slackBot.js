@@ -4,7 +4,6 @@ const http_slack = require("../helpers/http_slack");
 const ProcessBotResponse = async (req, res) => {
   try {
     let payload = req.body;
-    console.log("payload: " + JSON.stringify(payload));
 
     let responseText =
       "Sorry, I didn't understand what you said, can we try it again?";
@@ -16,11 +15,7 @@ const ProcessBotResponse = async (req, res) => {
 
     msgText = payload.event.text.toLowerCase();
 
-    console.log("payload.bot_id: ", payload.bot_id);
-    console.log("payload.event.text: ", payload.event.text);
-    console.log("payload.event.type: ", payload.event.type);
-    
-    if (!payload.bot_id && payload.bot_id == undefined) {
+    if (payload.event.bot_id == undefined) {
       if (payload.event.type === "message" && msgText != "") {
         if (msgText.search(/\bhello\b/) >= 0 || msgText.search(/\bhi\b/) >= 0) {
           responseText = "Hey there! How are you doing? :wave:";
