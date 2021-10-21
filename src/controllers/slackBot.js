@@ -32,6 +32,7 @@ const ProcessBotResponse = async (req, res) => {
         responseText =
           "Please provide vehicle data (VIN, Make, Model, Year or Fuel Type)";
       } else {
+        //read and validate make
         makeArray = msgText.match(/toyota|honda|nissan/); //this would have to be a list, maybe the list from NHTSA or a database and not hardcoded
         if (makeArray != null && makeArray.length > 1) {
           responseText = "Please provide just one Make";
@@ -39,6 +40,7 @@ const ProcessBotResponse = async (req, res) => {
           make = makeArray[0];
         }
 
+        //read and validate model
         modelArray = msgText.match(/camry|civic|sentra/); //this would have to be a list, maybe the list from NHTSA or a database and not hardcoded
         if (modelArray != null && modelArray.length > 1) {
           responseText = "Please provide just one Model";
@@ -46,6 +48,7 @@ const ProcessBotResponse = async (req, res) => {
           model = modelArray[0];
         }
 
+        //read and validate fuel type
         fuelTypeArray = msgText.match(/regular|premium/); //this would have to be a list from a database and not hardcoded
         if (fuelTypeArray != null && fuelTypeArray.length > 1) {
           responseText = "Please provide just one Fuel Type";
@@ -53,8 +56,9 @@ const ProcessBotResponse = async (req, res) => {
           fuelType = fuelTypeArray[0];
         }
 
+        //read year
         yearArray = msgText.match(
-          /2010|2011|2013|2014|2015|2016|2017|2018|2019|2020|2021/ // this would have to be also a dynamic list based on a definition
+          /1980|1981|1982|1983|1984|1985|1986|1987|1988|1989|1990|1991|1992|1993|1994|1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2013|2014|2015|2016|2017|2018|2019|2020|2021/ // this would have to be also a dynamic list based on a definition
         );
         if (yearArray != null && yearArray.length > 1) {
           responseText = "Please provide just one Fuel Type";
@@ -62,6 +66,7 @@ const ProcessBotResponse = async (req, res) => {
           year = yearArray[0];
         }
 
+        //read and validate VIN
         arrMessage = msgText.split(" ");
         for (i = 0; i < arrMessage.length; i++) {
           wordArray = arrMessage[i].split(",");
@@ -73,6 +78,7 @@ const ProcessBotResponse = async (req, res) => {
           }
         }
 
+        //at leat vin and year to consume NHTSA endpoint
         if (year == "" || vin == "") {
           responseText =
             "Please provide at least VIN and Year to proceed. VIN must be 15 alphanumeric characters without O, I and Q letters :warning:";
@@ -80,6 +86,7 @@ const ProcessBotResponse = async (req, res) => {
           responseText =
             "_*Here you have the specifications of the vehicle*_ :information_source:\n";
 
+          //execute NHTSA endpoint
           let vehicleData = await http_nhtsa.getDecodedVIN(vin, year);
           objVehicleData = JSON.parse(JSON.stringify(vehicleData)).Results;
           responseText +=
@@ -99,18 +106,25 @@ const ProcessBotResponse = async (req, res) => {
     console.log("responseText: ", responseText);
 
     var body = {
-      channel: req.body.event.channel, // Slack user or channel, where you want to send the message
+      channel: req.body.event.channel,
       text: responseText,
     };
 
-    http_slack.botResponse(body);
-
-    res
-      .status(200)
-      .send({ code: "success", message: "bot responded successfully" });
+    //execute slack endpoint to send message
+    slackMessageSent = await http_slack.botResponse(body);
+    
+    if (!slackMessageSent) {
+      res
+        .status(400)
+        .send({ code: "error", message: "could not send slack message" });
+    } else {
+      res
+        .status(200)
+        .send({ code: "success", message: "bot responded successfully" });
+    }
   } catch (err) {
     console.log(err);
-    res.status(400).send({ code: "error", message: "an error occurred" });
+    res.status(400).send({ code: "error", message: err });
   }
 };
 
