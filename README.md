@@ -14,7 +14,7 @@ Information you will get (among much others) from the vehicle will be Decoded (S
 To be able to use the NHTSA slack bot you just have to join Luis Millan workspace in the following link:
 https://join.slack.com/t/luismillan/shared_invite/zt-xsqt44c0-UwALGuGx8F2cJ2DYrfE1uQ
 
-Once there the channel `#nhtsa-bot` is already configured to chat with the bot, her name is *slack-bot* and she will try to be very friendly and help 
+Once there the channel `#nhtsa-bot` is already configured to chat with the bot, her name is ***slack-bot*** and she will try to be very friendly and help 
 
 Also you can chat in a direct message channel with the bot and she gladly will help you out
 
