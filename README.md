@@ -1,6 +1,6 @@
 # slack-bot
 
-slack-bot will provide with information from the NSTSA database
+slack-bot will provide with information from the NHTSA database
 
 Through a slack bot connected to a backend deployed in Heroku, you will be able to get information of a vehicle providing:
 - VIN
@@ -9,12 +9,12 @@ Through a slack bot connected to a backend deployed in Heroku, you will be able 
 - Year
 - Fuel Type
 
-Information you will get will be a Decoded (Suggested) VIN, Manufacturer, Plant City, Series, Base Price, among much more specifications of the vehicle
+Information you will get (among much others) from the vehicle will be Decoded (Suggested) VIN, Manufacturer, Plant City, Series, Base Price, etc.
 
-To be able to use the NHTSA slack bot you just have to join Luis Millan workspace in the following link
+To be able to use the NHTSA slack bot you just have to join Luis Millan workspace in the following link:
 https://join.slack.com/t/luismillan/shared_invite/zt-xsqt44c0-UwALGuGx8F2cJ2DYrfE1uQ
 
-Once there the channel #nhtsa-bot is already configured to chat with the bot, her name is slack-bot-booster and she will try to be very friendly and help 
+Once there the channel `#nhtsa-bot` is already configured to chat with the bot, her name is *slack-bot* and she will try to be very friendly and help 
 
 Also you can chat in a direct message channel with the bot and she gladly will help you out
 

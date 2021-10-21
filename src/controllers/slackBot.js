@@ -78,7 +78,7 @@ const ProcessBotResponse = async (req, res) => {
           for (i = 0; i < arrMessage.length; i++) {
             wordArray = arrMessage[i].split(",");
             for (j = 0; j < wordArray.length; j++) {
-              vinArray = wordArray[j].toUpperCase().match(/^[^OIQ]{15}$/);
+              vinArray = wordArray[j].toUpperCase().match(/^[^OIQ]{17}$/);
               if (vinArray != null && vinArray.length >= 0) {
                 vin = vinArray[0].toUpperCase();
               }
@@ -90,7 +90,7 @@ const ProcessBotResponse = async (req, res) => {
             responseText = "Sorry, I didn't understand what you said, can we try it again?"
           } else if (year == "" || vin == "") {
             responseText =
-              "Please provide at least VIN and Year to proceed. VIN must be 15 alphanumeric characters without O, I and Q letters :warning:";
+              "Please provide at least VIN and Year to proceed. VIN must be 17 alphanumeric characters without O, I and Q letters :warning:";
           } else {
             responseText =
               "_*Here you have the specifications of the vehicle*_ :information_source:\n";
