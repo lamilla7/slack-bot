@@ -14,9 +14,9 @@ Information you will get (among much others) from the vehicle will be Decoded (S
 To be able to use the NHTSA slack bot you just have to join Luis Millan slack workspace in the following link:
 https://join.slack.com/t/luismillan/shared_invite/zt-xsqt44c0-UwALGuGx8F2cJ2DYrfE1uQ
 
-Once there the channel `#nhtsa-bot` is already configured to chat with the bot, her name is `slack-bot` and she will try to be very friendly and help 
+Once there the channel `#nhtsa-bot` is already configured to chat with the bot, her name is `slack-bot` and she will be friendly and try to help you out
 
-Also you can chat with `slack-bot` in a direct message channel, you just have to look for her and begin a conversation, she will 
+Also you can chat with `slack-bot` in a direct message channel, you just have to look for her and begin a conversation
 
 Some specifications and example for fields required:
 - VIN: 17 character string that does not contain letter O, I and Q
