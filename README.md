@@ -29,6 +29,6 @@ Some specifications and example for fields required:
 
 The slack-bot chat application is developed in Node.js platform to handle the requests and responses from bot to slack
 
-Luis Millan'n workspace configured and connected to a backend API `POST https://slack-bot-booster.herokuapp.com/api/slack/bot` which is deployed on Heroku cloud
+Luis Millan'n slack workspace is configured and connected to a backend API which is deployed on Heroku cloud
 
 In order to do a health check of the backend a `GET https://slack-bot-booster.herokuapp.com` can be done 
