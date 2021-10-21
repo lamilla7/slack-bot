@@ -5,6 +5,8 @@ const ProcessBotResponse = async (req, res) => {
   try {
     let payload = req.body;
 
+    res.status(200).send(req.body.challenge)
+
     let responseText =
       "Sorry, I didn't understand what you wrote, can we try it again?";
     let vin = "";
