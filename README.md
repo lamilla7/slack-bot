@@ -1,8 +1,8 @@
 # slack-bot
 
-slack-bot will provide with information from the NHTSA database
+slack-bot will provide information from the NHTSA database
 
-Through a slack bot connected to a backend deployed in Heroku, you will be able to get information of a vehicle providing:
+Through a slack bot connected to a Node.js backend deployed in Heroku, you will be able to get information of a vehicle providing:
 - VIN
 - Make
 - Model
