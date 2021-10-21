@@ -95,16 +95,19 @@ const ProcessBotResponse = async (req, res) => {
     //   }
 
     //   let vehicleData = await http_nhtsa.getDecodedVIN(vin, year);
-    //   objVehicleData = JSON.parse(vehicleData).Results;
-    //   //   console.log("modelsByMake: ", objVehicleData[0]);
+    //   // console.log("modelsByMake: ", vehicleData);
+    //   objVehicleData = JSON.parse(JSON.stringify(vehicleData)).Results;
+    //   // console.log("objVehicleData:", objVehicleData);
     //   responseText +=
     //     objVehicleData[0].Variable + ": " + objVehicleData[0].Value;
-    //   //   for (let i = 0; i < objVehicleData.length; i) {
-    //   //     responseText +=
-    //   //       objVehicleData[i].Variable + ": " + objVehicleData[i].Value + "\n";
-    //   //   }
-    //   //   console.log(modelsByMake.Results);
+    //     // for (let i = 0; i < objVehicleData.length; i) {
+    //     //   responseText +=
+    //     //     objVehicleData[i].Variable + ": " + objVehicleData[i].Value + "\n";
+    //     // }
+    //     // console.log(modelsByMake.Results);
     // }
+
+    // console.log("responseText: ", responseText);
 
     // var body = {
     //   channel: req.body.event.channel, // Slack user or channel, where you want to send the message
