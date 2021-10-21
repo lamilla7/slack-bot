@@ -8,7 +8,7 @@ async function main() {
   app.use(bodyParser.json());
   app.use(router);
 
-  router.use("/api/", require("../src/routes/index.js"));
+  router.use("/api/", require("./src/routes/index.js"));
 
   app.listen(process.env.PORT || 3000, async () => {
     console.log("Running in port: " + process.env.PORT);

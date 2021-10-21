@@ -21,7 +21,9 @@ const getDecodedVIN = async (vin, year) => {
         }
       }
     );
-  }).catch(error);
+  }).catch(function (err) {
+    console.log(err);
+  });
 };
 
 exports.getDecodedVIN = getDecodedVIN;
