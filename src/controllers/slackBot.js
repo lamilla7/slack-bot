@@ -5,8 +5,7 @@ const ProcessBotResponse = async (req, res) => {
   try {
     let payload = req.body;
 
-    let responseText =
-      "Sorry, I didn't understand what you said, can we try it again?";
+    let responseText = "";
     let vin = "";
     let make = "";
     let model = "";
@@ -21,20 +20,21 @@ const ProcessBotResponse = async (req, res) => {
           responseText = "Hey there! How are you doing? :wave:";
         } else if (
           msgText.includes("fine") ||
-          msgText.includes("you") ||
+          msgText.includes("ok") ||
           msgText.includes("well")
         ) {
           responseText = "That's great :+1:  what can I do for you?";
         } else if (
           msgText.includes("vehicle") ||
           msgText.includes("nhtsa") ||
+          msgText.includes("info") ||
           msgText.includes("data")
         ) {
           responseText =
             "Please provide vehicle data (VIN, Make, Model, Year or Fuel Type)";
         } else {
           //read and validate make
-          makeArray = msgText.match(/toyota|honda|nissan/); //this would have to be a list, maybe the list from NHTSA or a database and not hardcoded
+          makeArray = msgText.match(/toyota|honda|nissan/); //this would have to be dynamic, maybe the list from NHTSA or a database
           if (makeArray != null && makeArray.length > 1) {
             responseText = "Please provide just one Make";
           } else if (makeArray != null && makeArray.length === 1) {
@@ -42,7 +42,7 @@ const ProcessBotResponse = async (req, res) => {
           }
   
           //read and validate model
-          modelArray = msgText.match(/camry|civic|sentra/); //this would have to be a list, maybe the list from NHTSA or a database and not hardcoded
+          modelArray = msgText.match(/camry|civic|sentra/); //this would have to be dynamic, maybe the list from NHTSA or a database
           if (modelArray != null && modelArray.length > 1) {
             responseText = "Please provide just one Model";
           } else if (modelArray != null && modelArray.length === 1) {
@@ -50,7 +50,7 @@ const ProcessBotResponse = async (req, res) => {
           }
   
           //read and validate fuel type
-          fuelTypeArray = msgText.match(/regular|premium/); //this would have to be a list from a database and not hardcoded
+          fuelTypeArray = msgText.match(/regular|premium/);
           if (fuelTypeArray != null && fuelTypeArray.length > 1) {
             responseText = "Please provide just one Fuel Type";
           } else if (fuelTypeArray != null && fuelTypeArray.length === 1) {
@@ -59,7 +59,7 @@ const ProcessBotResponse = async (req, res) => {
   
           //read year
           yearArray = msgText.match(
-            /1980|1981|1982|1983|1984|1985|1986|1987|1988|1989|1990|1991|1992|1993|1994|1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2013|2014|2015|2016|2017|2018|2019|2020|2021/ // this would have to be also a dynamic list based on a definition
+            /2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2013|2014|2015|2016|2017|2018|2019|2020|2021/ // this would have to be dynamic based on a definition
           );
           if (yearArray != null && yearArray.length > 1) {
             responseText = "Please provide just one Fuel Type";
@@ -80,7 +80,9 @@ const ProcessBotResponse = async (req, res) => {
           }
   
           //at leat vin and year to consume NHTSA endpoint
-          if (year == "" || vin == "") {
+          if (vin === "" && make === "" && model === "" && year === "" && fuelType === "") {
+            responseText = "Sorry, I didn't understand what you said, can we try it again?"
+          } else if (year == "" || vin == "") {
             responseText =
               "Please provide at least VIN and Year to proceed. VIN must be 15 alphanumeric characters without O, I and Q letters :warning:";
           } else {
