@@ -4,7 +4,7 @@ const http_slack = require("../helpers/http_slack");
 const ProcessBotResponse = async (req, res) => {
   try {
     let payload = req.body;
-    console.log("payload: " + payload);
+    console.log("payload: " + JSON.stringify(payload));
 
     let responseText =
       "Sorry, I didn't understand what you said, can we try it again?";
