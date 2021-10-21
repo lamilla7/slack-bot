@@ -5,8 +5,6 @@ const ProcessBotResponse = async (req, res) => {
   try {
     let payload = req.body;
 
-    console.log("payload", payload);
-
     let responseText =
       "Sorry, I didn't understand what you said, can we try it again?";
     let vin = "";
@@ -17,7 +15,7 @@ const ProcessBotResponse = async (req, res) => {
 
     msgText = payload.event.text.toLowerCase();
     
-    if (!payload.authorizations[0].is_bot) {
+    if (!payload.bot_id) {
       if (payload.event.type === "message" && msgText != "") {
         if (msgText.search(/\bhello\b/) >= 0 || msgText.search(/\bhi\b/) >= 0) {
           responseText = "Hey there! How are you doing? :wave:";
