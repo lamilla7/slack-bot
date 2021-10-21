@@ -1,5 +1,5 @@
 // const https = require("https");
-const request = require("request-promise");
+const request = require("request");
 
 const getDecodedVIN = async (vin, year) => {
   var url = `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/${vin}?format=json&modelyear=${year}`;
