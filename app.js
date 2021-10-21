@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 
-const allowCrossDomain = (req, res, next) => {
-
 async function main() {
   const app = express();
   app.use(bodyParser.json());
