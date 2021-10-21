@@ -18,8 +18,6 @@ const botResponse = (body) => {
       if (err) {
         reject(err);
       }
-
-      // console.log(body);
     }
   );
 };

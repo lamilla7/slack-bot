@@ -9,11 +9,8 @@ const getDecodedVIN = async (vin, year) => {
       resolve(response)
     }).catch(err => {
       console.log("err: ", err);
+      reject(err);
     })
-  })
-
-  promise.catch(err => {
-    console.log(err);
   })
 
   let result = await promise
