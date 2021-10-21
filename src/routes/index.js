@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const slackBot = require("./slackbot");
+const slackBot = require("../routes/slackBot");
 
 router.use("/slack/bot", slackBot);
 

@@ -8,6 +8,7 @@ async function main() {
   app.use(bodyParser.json());
   app.use(router);
 
+  router.use("/", require("./src/routes/app"));
   router.use("/api/", require("./src/routes"));
 
   app.listen(process.env.PORT || 3000, async () => {
